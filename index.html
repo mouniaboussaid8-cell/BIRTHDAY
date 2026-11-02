@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joyeux Anniversaire ! 🎂</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Police mignonne Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Bibliothèques pour les confettis -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Conteneur principal format téléphone -->
+  <div class="phone-container">
+    
+    <!-- Zone Avatar Anime & Bulle de Dialogue -->
+    <div class="chibi-avatar-section">
+      <div class="dialogue-bubble">
+        <p id="dialogue-text">Coucou ! Bienvenue sur ta surprise... Prêt à jouer ?</p>
+      </div>
+      <div class="chibi-character">
+        <!-- Avatar fille cheveux bruns style anime -->
+        <img id="chibi-img" src="png/chibi-img.jpg" alt="Moi en Chibi">
+      </div>
+    </div>
+
+   <!-- JEU 1 : CODE SECRET -->
+<div id="game-1" class="game-screen active-screen">
+  <h2 class="game-title">🔒 Code Secret</h2>
+  <div class="input-card">
+    <input type="text" id="passcode-input" placeholder="JJ/MM" maxlength="5">
+    <button id="btn-submit-code" onclick="checkCode()">Valider 💕</button>
+  </div>
+  <p id="code-error" class="error-msg"></p>
+</div>
+
+    <!-- JEU 2 : QUIZ -->
+    <div id="game-2" class="game-screen hidden-screen">
+      <h2 class="game-title">❓ Question <span id="quiz-step">1</span>/3</h2>
+      <div class="quiz-card">
+        <p id="quiz-question-text" class="question-text"></p>
+        <div id="quiz-options" class="options-container"></div>
+      </div>
+      <p id="quiz-error" class="error-msg"></p>
+    </div>
+
+    <!-- JEU 3 : ATTRAPE LES CŒURS -->
+    <div id="game-3" class="game-screen hidden-screen">
+      <h2 class="game-title">💖 Attrape 5 cœurs !</h2>
+      <p class="score-tracker">Score : <span id="score-count">0</span> / 5</p>
+      <div id="tap-game-area" class="tap-area"></div>
+    </div>
+
+   <!-- PAGE D'ANNIVERSAIRE (RÉVÉLATION) -->
+    <div id="birthday-page" class="game-screen hidden-screen">
+      <h1 class="hbd-title">Joyeux Anniversaire ! </h1>
+      <!-- Fichier audio de la chanson (caché) -->
+<audio id="bday-audio" src="joyeux-anniversaire.mp3" preload="auto"></audio>
+
+      <!-- Conteneur centralisé pour le gâteau et l'enveloppe -->
+      <div class="birthday-center-content">
+        <!-- Gâteau & Bougie en Image -->
+        <div class="cake-container">
+          <div class="cake-image-wrapper">
+            <div class="flame" id="candle-flame"></div>
+            <img src="png/gateau-cerise.jpg" alt="Gâteau aux cerises" class="real-cake-img">
+          </div>
+        </div>
+
+        <button id="mic-btn" onclick="startMicDetection()">🎤 Clique ici et souffle sur le micro !</button>
+        <p id="mic-status" class="mic-status-text"></p>
+
+       <!-- ENVELOPPE (Cachée au début, elle apparaîtra après le souffle) -->
+        <div id="envelope-section" class="envelope-section hidden-screen">
+          <div id="envelope-btn" class="envelope" onclick="openEnvelope()">
+            <div class="envelope-flap"></div>
+            <div class="heart-seal">❤️</div>
+            <p class="envelope-title">Pour Smaïl</p>
+          </div>
+        </div>
+
+      <!-- La Lettre / Message (Cachée au début) -->
+      <div id="letter-modal" class="letter-modal hidden-screen">
+        <div class="letter-content">
+          <button class="close-btn" onclick="closeEnvelope()">❌</button>
+          <h3 class="letter-heading"> Smaïl... 💌</h3>
+          <p class="letter-text">
+            Joyeux anniversaire ! 
+            Je voulais que cette petite surprise te montre à quel point tu comptes pour moi. 
+            J'apprends chaque jour à quel point nos deux univers se ressemblent, et ta gentillesse ainsi que ta bienveillance envers moi me touchent énormément.
+            Merci d'être cette personne si à l'écoute, respectueuse et compréhensive avec moi. Tes mots m'ont fait très chaud au cœur, et j'apprécie profondément la patience dont tu fais preuve quant à mes sentiments et mes principes.
+            Pour ton anniversaire, je te souhaite tout le bonheur, la réussite et la paix du monde. Qu'Allah préserve cette belle complicité entre nous.
+            Passe une journée aussi merveilleuse que toi ! Bisous 💕
+          </p>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
